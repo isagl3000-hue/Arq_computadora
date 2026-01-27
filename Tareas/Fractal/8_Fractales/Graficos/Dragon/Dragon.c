@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "logo.h"
+#include "Dragon.h"
+
+int nivelRecursionDragon;
+double longitudDragon;
+double miX0Dragon;
+double miY0Dragon;
+LOGO *tortugaAuxDragon;
+
+int rDragon(int n, double l, LOGO *tortuga);
+int lDragon(int n, double l, LOGO *tortuga);
+
+int iniciaDragon(int n, double l, double x, double y, LOGO *tortuga)
+{
+  nivelRecursionDragon=n;
+  longitudDragon = l;
+  miX0Dragon=x;
+  miY0Dragon=y;
+  tortugaAuxDragon = tortuga;
+  
+  return 0;
+}
+
+int dibujaDragon(void){
+  inicia(miX0Dragon, miY0Dragon, 0, ABAJO, tortugaAuxDragon);
+
+  return lDragon(nivelRecursionDragon, longitudDragon, tortugaAuxDragon);
+}
+
+
+
+
+
+int lDragon(int n, double l, LOGO *tortuga)
+{
+  if (n<=0){
+    avanza(l, tortuga);
+    return 0;
+  }
+  lDragon(n-1, l, tortuga);
+  izq(90, tortuga);
+  rDragon(n-1, l, tortuga);
+  
+  return 0;
+}
+
+int rDragon(int n, double l, LOGO *tortuga)
+{
+  if (n<=0){
+    avanza(l, tortuga);
+    return 0;
+  }
+  lDragon(n-1, l, tortuga);
+  der(90, tortuga);
+  rDragon(n-1, l, tortuga);
+  
+  return 0;
+}

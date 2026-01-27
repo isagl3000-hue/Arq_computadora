@@ -1,0 +1,54 @@
+---------------------------------------------------------
+CODIGO DEL SISTEMA-L (Curva de Wirth)
+---------------------------------------------------------
+
+axiom
+G(-4,5) X(0) Y(0) Z(90) S(0.6) P(1,0.0,0.0)
+C-F+F-C-F+F-C-F+F-C-F+F;
+
+rules 2
+C= C-F+F-C+F+C-F+F-C;
+end
+
+rules 1
+C=F;
+end
+
+---------------------------------------------------------
+EXPLICACIÓN DETALLADA DEL FUNCIONAMIENTO
+---------------------------------------------------------
+
+1. CONFIGURACIÓN DEL AXIOMA (Estado Inicial):
+   - G(-4,5): Desplaza a la tortuga a las coordenadas X=-4, Y=5 sin dibujar.
+   - X(0) Y(0) Z(90): Define la orientación espacial. Z(90) indica que la 
+     tortuga comienza mirando hacia arriba.
+   - S(0.6): Establece la escala o longitud de cada paso de dibujo (F).
+   - P(1,0.0,0.0): Define el color de la línea en formato RGB (Rojo=1, Verde=0, 
+     Azul=0), resultando en un trazo rojo puro.
+   - C-F+F-C-F+F-C-F+F-C-F+F;: Es la cadena inicial (semilla), semejante a una cruz. 
+     Que, como comento el profesor,"Conservamos" las esquinas interiores de la cruz inicial, 
+     y sobre las aristas externas se realiza la sustitución de dicha arista por el 
+     "valle escalera" que se ha denotado por "C", que se encuentra en la regla de recursión.
+
+2. REGLAS DE PRODUCCIÓN:
+
+   A) Regla de Recursión (rules 2): 
+      C = C-F+F-C+F+C-F+F-C;
+      Esta regla se aplica en las primeras etapas del dibujo, es nuestro "valle escalera". 
+      Cada vez que el sistema encuentra una 'C', la reemplaza por una secuencia que incluye 
+      más 'C' y giros. Esto crea la autosemejanza del fractal, donde cada 
+      segmento se convierte en una versión más pequeña y compleja de la figura 
+      total.
+
+   B) Regla Terminal o Caso Base (rules 1): 
+      C = F;
+      Esta regla se aplica en la última iteración. Detiene la recursividad 
+      sustituyendo todas las variables 'C' restantes por un paso adelante 'F'. 
+      Esto permite que la tortuga finalmente dibuje las líneas físicas que 
+      componen la imagen final.
+      
+Por: Isaias Garcia Lopez
+Para: Arquitectura de la Computadora
+Profesor: Eduardo Virueña Silva
+
+
